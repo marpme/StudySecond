@@ -619,15 +619,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1477326057983</updated>
-      <workItem from="1477326060090" duration="6349000" />
+      <workItem from="1477326060090" duration="6598000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6349000" />
+    <option name="totallyTimeSpent" value="6598000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="827" extended-state="1" />
+    <frame x="0" y="23" width="1440" height="827" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -711,7 +711,7 @@
         <state relative-caret-position="137">
           <caret line="1251" column="0" selection-start-line="1251" selection-start-column="0" selection-end-line="1251" selection-end-column="0" />
           <folding>
-            <element signature="e#49082#49083#0" expanded="true" />
+            <element signature="e#49082#49083#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -721,8 +721,8 @@
         <state relative-caret-position="234">
           <caret line="304" column="0" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
           <folding>
-            <element signature="e#48854#48855#0" expanded="true" />
-            <element signature="e#48890#48891#0" expanded="true" />
+            <element signature="e#48854#48855#0" expanded="false" />
+            <element signature="e#48890#48891#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -742,9 +742,9 @@
         <state relative-caret-position="129">
           <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
           <folding>
-            <element signature="e#8037#8038#0" expanded="true" />
-            <element signature="e#8065#8066#0" expanded="true" />
-            <element signature="e#12210#12211#0" expanded="true" />
+            <element signature="e#8037#8038#0" expanded="false" />
+            <element signature="e#8065#8066#0" expanded="false" />
+            <element signature="e#12210#12211#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -754,8 +754,8 @@
         <state relative-caret-position="159">
           <caret line="872" column="0" selection-start-line="872" selection-start-column="0" selection-end-line="872" selection-end-column="0" />
           <folding>
-            <element signature="e#28403#28404#0" expanded="true" />
-            <element signature="e#28450#28451#0" expanded="true" />
+            <element signature="e#28403#28404#0" expanded="false" />
+            <element signature="e#28450#28451#0" expanded="false" />
           </folding>
         </state>
       </provider>
