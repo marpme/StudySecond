@@ -2,7 +2,7 @@
  * BitFlags Class for operating with single bit
  * switchOn, off, swap and check if set.
  * @author Marvin Piekarek
- * @date 27. Oct 2016
+ * @date 27th Oct 2016
  * @Matrikel s0556014
  * @module programming II
  */
@@ -39,7 +39,7 @@ public class BitFlags {
      * @param index Integer value which bit should be set on
      */
     public void switchOn(int index){
-        if(index > MAX_SIZE) throw new IndexOutOfBoundsException();
+        if(index > MAX_SIZE || index < 1) throw new IndexOutOfBoundsException();
         status = status | (1 << index - 1);
     }
 
@@ -48,7 +48,7 @@ public class BitFlags {
      * @param index Integer value which bit should be set off
      */
     public void switchOff(int index){
-        if(index > MAX_SIZE) throw new IndexOutOfBoundsException();
+        if(index > MAX_SIZE || index < 1) throw new IndexOutOfBoundsException();
         status = status & ~(1 << index - 1);
     }
 
@@ -57,7 +57,7 @@ public class BitFlags {
      * @param index Integer value which bit should be swapped
      */
     public void swap(int index){
-        if(index > MAX_SIZE) throw new IndexOutOfBoundsException();
+        if(index > MAX_SIZE || index < 1) throw new IndexOutOfBoundsException();
         status = status ^ (1 << index - 1);
     }
 
@@ -67,22 +67,17 @@ public class BitFlags {
      * @return a boolean
      */
     public boolean isSet(int index){
-        if(index > MAX_SIZE) throw new IndexOutOfBoundsException();
+        if(index > MAX_SIZE || index < 1) throw new IndexOutOfBoundsException();
 
         /*
-            We'll create our mask by shifting a one to left by the index that we want to check.
-            And then we'll build the complementary of it to OR this with our current
-            value and resolve the complementary of the last result as shown below:
-
             mask  => 0000 1000 0000
-            cmask => 1111 0111 1111
+            mask2 => 0000 0010 0000
             value => 0001 0010 1111
-            OR    => 1111 0111 1111
-            COR   => 0000 1000 0000
-
-            If it is zero (0), then the bit was set, otherwise it wasn't.
+            AND   => 0000 0000 0000
+            AND2  => 0000 0010 0000
+            If it is zero (0), then the bit wasn't set, otherwise it was.
          */
-        return ~(status | ~(1 << index - 1)) == 0;
+        return (status & (1 << index - 1)) != 0;
     }
 
 }

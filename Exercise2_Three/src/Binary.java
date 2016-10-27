@@ -5,15 +5,6 @@
 public class Binary {
 
     /**
-     * Ad-hoc Tests for binary writing
-     */
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++){
-            System.out.println(inBinary((int)(Math.random() * 999999999)));
-        }
-    }
-
-    /**
      * Turns an Integer number into bit-string
      * @param value Integer value
      * @return bit value string
