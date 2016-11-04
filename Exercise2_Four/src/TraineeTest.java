@@ -7,5 +7,5 @@ public class TraineeTest {
         Trainee t = new Trainee("Marvin", "Piekarek", 3500, "technical trainee", 2);
         System.out.println(t);
     }
-    
+
 }
