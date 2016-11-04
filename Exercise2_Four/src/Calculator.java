@@ -5,10 +5,10 @@ public class Calculator {
 
     public static void main(String[] args) {
 
-        if(args[0] == null)
+        if(args.length != 3)
         {
             System.out.println("Proper Usage is: java Calculator <num> <operator> <num>");
-            System.exit(0);
+            System.exit(1);
         }
 
         mathCalc(args);
@@ -24,6 +24,7 @@ public class Calculator {
         }catch(Exception e){
             System.out.println("<Num> <Oper> <Num2> - Number wasn't a number. Please retry.");
             System.out.println("Exiting!");
+            System.exit(1);
         }
 
         switch (args[1]){

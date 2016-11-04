@@ -3,6 +3,8 @@
  */
 public interface IEmployee {
 
+    public final String CURRENCY = "EUR";
+
     /**
      * Gets the name of the employee
      * @return String with the name

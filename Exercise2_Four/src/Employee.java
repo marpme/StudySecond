@@ -61,6 +61,19 @@ public class Employee implements IEmployee {
     }
 
     /**
+     * Employee data to String
+     * @return String with employee data
+     */
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
+    /**
      * Gets the salary of the employee
      *
      * @return double as salary
@@ -78,4 +91,7 @@ public class Employee implements IEmployee {
     public void raiseSalary(double a) {
         salary += Math.abs(a);
     }
+
+
+
 }

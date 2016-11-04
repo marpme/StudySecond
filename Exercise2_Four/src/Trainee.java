@@ -13,6 +13,17 @@ public class Trainee extends Employee implements IEmployee {
         this.traineeYear = traineeYear;
     }
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", salary=" + salary + '\'' +
+                ", traineeYear=" + traineeYear +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     /**
      * Gets the current trainee year
      * @return Integer as current year

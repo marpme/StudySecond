@@ -4,6 +4,6 @@
 public class EmployeeTest {
     public static void main(String[] args) {
         Employee e = new Employee("Marvin", "Piekarek", 10000);
-
+        System.out.println(e);
     }
 }
