@@ -20,6 +20,9 @@ public class Employee implements IEmployee {
      */
     double salary = 0;
 
+    /**
+     * Custom constructor for Employee
+     */
     public Employee(String name, String surname, double salary){
         this.name = name;
         this.surname = surname;
