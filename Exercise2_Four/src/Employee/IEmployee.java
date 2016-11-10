@@ -1,11 +1,11 @@
-package Employee;
+package employee;
 
 /**
  * Created by marvinpiekarek on 01.11.16.
  */
 public interface IEmployee {
 
-    public final String CURRENCY = "EUR";
+    String CURRENCY = "EUR";
 
     /**
      * Gets the name of the employee

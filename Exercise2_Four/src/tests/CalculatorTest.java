@@ -1,4 +1,4 @@
-package Calculator;
+import calculator.Calculator;
 
 /**
  * Created by marvinpiekarek on 04.11.16.
@@ -11,6 +11,7 @@ public class CalculatorTest {
      * @param args program paraments not needed.
      */
     public static void main(String[] args) {
+
         // invalid arguments, wrong count ...
         Calculator.main(new String[]{"kk", "6"});
         // invalid operator

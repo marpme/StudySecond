@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 /**
  * Created by marvinpiekarek on 01.11.16.
@@ -24,9 +24,22 @@ public class Employee implements IEmployee {
      * Custom constructor for Employee
      */
     public Employee(String name, String surname, double salary){
-        this.name = name;
-        this.surname = surname;
-        this.salary = salary;
+        try{
+            if(name.isEmpty()){
+                throw new EmployeeConstructorException("Name", "Empty");
+            }
+            this.name = name;
+            if(surname.isEmpty()){
+                throw new EmployeeConstructorException("Surname", "Empty");
+            }
+            this.surname = surname;
+            if(salary == 0){
+                throw new EmployeeConstructorException("Salary", "0");
+            }
+            this.salary = salary;
+        }catch (EmployeeConstructorException e){
+            return;
+        }
     }
 
     /**
@@ -44,12 +57,15 @@ public class Employee implements IEmployee {
      */
     @Override
     public void setName(String a) {
+        if(a.isEmpty()){
+            System.out.println("The name must be filled.");
+            return;
+        }
         this.name = a;
     }
 
     /**
      * Gets the surname of the employee
-     *
      * @return String with the surname
      */
     @Override
@@ -62,6 +78,10 @@ public class Employee implements IEmployee {
      */
     @Override
     public void setSurname(String a) {
+        if(a.isEmpty()){
+            System.out.println("The surname must be filled.");
+            return;
+        }
         this.surname = a;
     }
 
@@ -74,13 +94,12 @@ public class Employee implements IEmployee {
         return "Employee.Employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", salary=" + salary +
+                ", salary=" + salary + ' ' + CURRENCY +
                 '}';
     }
 
     /**
      * Gets the salary of the employee
-     *
      * @return double as salary
      */
     @Override

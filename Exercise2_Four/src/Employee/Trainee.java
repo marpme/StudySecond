@@ -1,4 +1,4 @@
-package Employee;
+package employee;
 
 /**
  * Created by marvinpiekarek on 01.11.16.
@@ -11,16 +11,26 @@ public class Trainee extends Employee implements IEmployee {
     public Trainee(String name, String surname, double salary,
                    String description, int traineeYear){
         super(name, surname, salary);
-        this.description = description;
-        this.traineeYear = traineeYear;
+        try{
+            if(description.isEmpty()){
+                throw new EmployeeConstructorException("Description", "Empty");
+            }
+            this.description = description;
+            if(traineeYear < 1 || traineeYear > 3){
+                throw new EmployeeConstructorException("TraineeYear", ""+traineeYear);
+            }
+            this.traineeYear = traineeYear;
+        }catch (EmployeeConstructorException e){
+            return;
+        }
     }
 
     @Override
     public String toString() {
-        return "Employee.Employee{" +
+        return "Trainee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", salary=" + salary + '\'' +
+                ", salary=" + salary + ' ' + CURRENCY +
                 ", traineeYear=" + traineeYear +
                 ", description='" + description + '\'' +
                 '}';
@@ -39,6 +49,10 @@ public class Trainee extends Employee implements IEmployee {
      * @param traineeYear as new year
      */
     public void setTraineeYear(int traineeYear) {
+        if(traineeYear < 1 || traineeYear > 3) {
+            System.out.println("The trainee year must be within 1 to 3!");
+            return;
+        }
         this.traineeYear = traineeYear;
     }
 
@@ -55,6 +69,10 @@ public class Trainee extends Employee implements IEmployee {
      * @param description as String
      */
     public void setDescription(String description) {
+        if(description.isEmpty()) {
+            System.out.println("The description must not be empty!");
+            return;
+        }
         this.description = description;
     }
 }

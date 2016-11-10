@@ -1,4 +1,4 @@
-package Calculator;
+package calculator;
 
 /**
  * Created by marvinpiekarek on 01.11.16.
@@ -19,8 +19,8 @@ public class Calculator {
     }
 
     public static void mathCalc(String[] args){
-        double a = 0;
-        double b = 0;
+        double a;
+        double b;
 
         try{
             a = Double.parseDouble(args[0]);
@@ -45,7 +45,7 @@ public class Calculator {
             }
 
         }catch(NumberFormatException e) {
-            System.out.println("<Num> <Oper> <Num2> - Number wasn't a number. Please retry.");
+            System.out.println("<Num> <Operator> <Num2> - Number wasn't a number. Please retry.");
         }
 
     }
