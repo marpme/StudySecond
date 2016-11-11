@@ -1,3 +1,5 @@
+package tests;
+
 import calculator.Calculator;
 
 /**
@@ -6,7 +8,7 @@ import calculator.Calculator;
 public class CalculatorTest {
 
     /**
-     * ad-hoc-test for the Calculator Class
+     * ad-hoc-test for the calculator Class
      * Test coverage 100% as of 5th November
      * @param args program paraments not needed.
      */
@@ -23,6 +25,8 @@ public class CalculatorTest {
         Calculator.main(new String[]{"2", "div", "0"});
         // divide normal
         Calculator.main(new String[]{"2", "div", "2"});
+        // divide floating point
+        Calculator.main(new String[]{"22", "div", "7"});
         // subtract normal
         Calculator.main(new String[]{"2", "sub", "2"});
         // multiply normal

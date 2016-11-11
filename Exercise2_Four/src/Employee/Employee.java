@@ -21,7 +21,7 @@ public class Employee implements IEmployee {
     double salary = 0;
 
     /**
-     * Custom constructor for Employee
+     * Custom constructor for employee
      */
     public Employee(String name, String surname, double salary){
         try{
@@ -86,12 +86,12 @@ public class Employee implements IEmployee {
     }
 
     /**
-     * Employee.Employee data to String
+     * employee.employee data to String
      * @return String with employee data
      */
     @Override
     public String toString() {
-        return "Employee.Employee{" +
+        return "employee.employee{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", salary=" + salary + ' ' + CURRENCY +

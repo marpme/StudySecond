@@ -41,7 +41,7 @@ public interface IEmployee {
     void raiseSalary(double a);
 
     /**
-     * Employee.Employee data to String
+     * employee.employee data to String
      * @return String with all employee data
      */
     String toString();

@@ -9,7 +9,7 @@ public class Calculator {
 
         if(args.length != 3)
         {
-            System.out.println("Proper Usage is: java Calculator <num> <operator> <num>");
+            System.out.println("Proper Usage is: java calculator <num> <operator> <num>");
             System.out.println(" => Operator would be: add, sub, mul and div");
             System.out.println(" => Numbers can be written like: 4 or 4.4");
 
