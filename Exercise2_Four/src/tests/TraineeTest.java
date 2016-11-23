@@ -1,10 +1,17 @@
-package tests;
-
 import employee.Trainee;
 
-
+/**
+ * Trainee testing class
+ * @author Marvin Piekarek
+ * @date 12th November 2016
+ * @Matrikelnr 0556014
+ */
 public class TraineeTest {
 
+    /**
+     * Ad-hoc-tests
+     * @param args unused.
+     */
     public static void main(String[] args) {
 
         // create a new trainee

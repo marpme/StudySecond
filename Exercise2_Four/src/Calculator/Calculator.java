@@ -1,10 +1,17 @@
 package calculator;
 
 /**
- * Created by marvinpiekarek on 01.11.16.
+ * Calculator Class
+ * @author Marvin Piekarek
+ * @date 12th November 2016
+ * @Matrikelnr 0556014
  */
 public class Calculator {
 
+    /**
+     * Entry point for our GREAT calculator
+     * @param args string args with calculation details
+     */
     public static void main(String[] args) {
 
         if(args.length != 3)
@@ -18,11 +25,17 @@ public class Calculator {
         }
     }
 
-    public static void mathCalc(String[] args){
+    /**
+     * The mathematical parsing method
+     * @param args passed through the main method (mathematical args)
+     */
+    private static void mathCalc(String[] args){
         double a;
         double b;
 
         try{
+
+            // parsing numbers out of the first and the third args
             a = Double.parseDouble(args[0]);
             b = Double.parseDouble(args[2]);
 
@@ -50,19 +63,43 @@ public class Calculator {
 
     }
 
-    public static double add(double a, double b){
+    /**
+     * Add method
+     * @param a first number
+     * @param b second number
+     * @return the addition
+     */
+    private static double add(double a, double b){
         return a + b;
     }
 
-    public static double sub(double a, double b){
+    /**
+     * Subtraction method
+     * @param a first number
+     * @param b second number
+     * @return the subtraction
+     */
+    private static double sub(double a, double b){
         return a - b;
     }
 
-    public static double mul(double a, double b){
+    /**
+     * Multiply method
+     * @param a first number
+     * @param b second number
+     * @return multiplied number
+     */
+    private static double mul(double a, double b){
         return a * b;
     }
 
-    public static double div(double a, double b){
+    /**
+     * Dividing method
+     * @param a first number
+     * @param b second number
+     * @return the divided number
+     */
+    private static double div(double a, double b){
         if(b == 0) return Double.NaN;
 
         return a / b;

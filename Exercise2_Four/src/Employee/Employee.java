@@ -1,7 +1,10 @@
 package employee;
 
 /**
- * Created by marvinpiekarek on 01.11.16.
+ * Employee storing class with custom getter and setters
+ * @author Marvin Piekarek
+ * @date 12th November 2016
+ * @Matrikelnr 0556014
  */
 public class Employee implements IEmployee {
 
@@ -24,22 +27,9 @@ public class Employee implements IEmployee {
      * Custom constructor for employee
      */
     public Employee(String name, String surname, double salary){
-        try{
-            if(name.isEmpty()){
-                throw new EmployeeConstructorException("Name", "Empty");
-            }
-            this.name = name;
-            if(surname.isEmpty()){
-                throw new EmployeeConstructorException("Surname", "Empty");
-            }
-            this.surname = surname;
-            if(salary == 0){
-                throw new EmployeeConstructorException("Salary", "0");
-            }
-            this.salary = salary;
-        }catch (EmployeeConstructorException e){
-            return;
-        }
+        this.setName(name);
+        this.setSurname(surname);
+        this.raiseSalary(salary);
     }
 
     /**
@@ -57,11 +47,15 @@ public class Employee implements IEmployee {
      */
     @Override
     public void setName(String a) {
-        if(a.isEmpty()){
-            System.out.println("The name must be filled.");
-            return;
+        try{
+            if(a.isEmpty()){
+                throw new EmployeeDataException("name", "empty");
+            }
+            this.name = a;
+        }catch(EmployeeDataException e){
+            //ignore, no name change allowed.
         }
-        this.name = a;
+
     }
 
     /**
@@ -78,11 +72,14 @@ public class Employee implements IEmployee {
      */
     @Override
     public void setSurname(String a) {
-        if(a.isEmpty()){
-            System.out.println("The surname must be filled.");
-            return;
+        try{
+            if(a.isEmpty()){
+                throw new EmployeeDataException("surname", "empty");
+            }
+            this.surname = a;
+        }catch(EmployeeDataException e){
+            //ignore, no surname change allowed.
         }
-        this.surname = a;
     }
 
     /**
@@ -105,6 +102,21 @@ public class Employee implements IEmployee {
     @Override
     public double getSalary() {
         return salary;
+    }
+
+    /**
+     * Sets the salary of the employee
+     */
+    @Override
+    public void setSalary(double sal) {
+        try{
+            if(sal <= 0){
+                throw new EmployeeDataException("salary", "zero or lower. Not allowed.");
+            }
+            this.salary = sal;
+        }catch(EmployeeDataException e){
+            //ignore, no surname change allowed.
+        }
     }
 
     /**

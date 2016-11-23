@@ -1,16 +1,16 @@
-package tests;
-
 import calculator.Calculator;
 
 /**
- * Created by marvinpiekarek on 04.11.16.
+ * Employee testing class
+ * @author Marvin Piekarek
+ * @date 12th November 2016
+ * @Matrikelnr 0556014
  */
 public class CalculatorTest {
 
     /**
-     * ad-hoc-test for the calculator Class
-     * Test coverage 100% as of 5th November
-     * @param args program paraments not needed.
+     * Ad-hoc-tests
+     * @param args unused.
      */
     public static void main(String[] args) {
 

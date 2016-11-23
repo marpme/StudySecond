@@ -1,10 +1,16 @@
 package employee;
 
 /**
- * Created by marvinpiekarek on 01.11.16.
+ * Interface for Employees/Trainees
+ * @author Marvin Piekarek
+ * @date 12th November 2016
+ * @Matrikelnr 0556014
  */
 public interface IEmployee {
 
+    /**
+     * Constant string currency €
+     */
     String CURRENCY = "EUR";
 
     /**
@@ -34,6 +40,11 @@ public interface IEmployee {
      * @return Double with the salary
      */
     double getSalary();
+
+    /**
+     * Sets the salary of the employee
+     */
+    void setSalary(double sal);
 
     /**
      * Raises the salary of the employee

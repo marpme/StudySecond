@@ -1,12 +1,17 @@
-package tests;
-
 import employee.Employee;
 
 /**
- * Created by marvinpiekarek on 04.11.16.
+ * Employee testing class
+ * @author Marvin Piekarek
+ * @date 12th November 2016
+ * @Matrikelnr 0556014
  */
 public class EmployeeTest {
 
+    /**
+     * Ad-hoc-tests
+     * @param args unused.
+     */
     public static void main(String[] args) {
 
         // create new employee's
@@ -33,12 +38,18 @@ public class EmployeeTest {
         // should raise the salary instead of lowering it.
         System.out.println(e1);
 
+        // now set minus salary
+        e1.setSalary(-100);
         // try to set invalid name
         e1.setName("");
         // try to set invalid surname
         e1.setSurname("");
 
         // the object should not have changed.
+        System.out.println(e1);
+
+        // finally reset the salary
+        e1.setSalary(1600);
         System.out.println(e1);
     }
 
