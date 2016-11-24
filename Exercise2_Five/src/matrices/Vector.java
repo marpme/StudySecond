@@ -3,26 +3,20 @@ package matrices;
 import java.util.Arrays;
 
 /**
- * Created by marvinpiekarek on 17/11/2016.
+ * Vector class (mathematics matrix)
+ *
+ * @author Marvin Piekarek
  */
 public class Vector extends Matrix {
-
-    /**
-     * contains a true if it is a row vector
-     */
-    boolean isRowVector;
 
     /**
      * custom constructor with all vector values and
      * the boolean if it is a row vector
      *
-     * @param a           vector values
-     * @param isRowVector boolean
+     * @param a vector values
      */
-    public Vector(float[] a, boolean isRowVector) {
+    public Vector(double[] a) {
         super(a.length, 1);
-
-        this.isRowVector = isRowVector;
 
         for (int i = 0; i < super.getMatrix().length; i++) {
             for (int j = 0; j < super.getMatrix()[i].length; j++) {
@@ -38,8 +32,8 @@ public class Vector extends Matrix {
      */
     public double length() {
         double len = 0;
-        for (float[] a : this.getMatrix()) {
-            for (float val : a) {
+        for (double[] a : this.getMatrix()) {
+            for (double val : a) {
                 len += val * val;
             }
         }
@@ -55,19 +49,15 @@ public class Vector extends Matrix {
     public String toString() {
 
         String output = "";
-        for (float[] a : super.getMatrix()) {
-            if (isRowVector) {
-                output += Arrays.toString(a) + ", ";
-            } else {
-                output += " " + Arrays.toString(a) + ", \n";
-            }
+        for (double[] a : super.getMatrix()) {
+            output +=  Arrays.toString(a) + ", ";
         }
 
         // build the complete string
         return "Vector{" +
                 "rows=" + super.getRows() +
                 ", columns=" + super.getColumns() +
-                ", Components= \n" + output + "\n" +
+                ", Components=" + output +
                 '}';
     }
 

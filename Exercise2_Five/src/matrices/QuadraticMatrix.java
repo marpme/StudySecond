@@ -1,32 +1,47 @@
 package matrices;
 
 /**
- * Created by marvinpiekarek on 17/11/2016.
+ * QuadraticMatrix class (mathematics matrix)
+ *
+ * @author Marvin Piekarek
  */
 public class QuadraticMatrix extends Matrix {
 
-    public QuadraticMatrix(float[][] a) {
+    /**
+     * Constructor for QuadraticMatrix
+     * @param a double array
+     */
+    public QuadraticMatrix(double[][] a) {
         super(a.length, a[0].length);
         super.setMatrix(a);
     }
 
+    /**
+     * Calculates the power of the current object
+     * @param n value to power the matrix >= 0
+     * @return the powered matrix
+     */
     public Matrix pow(int n) {
-        Matrix fin = new QuadraticMatrix(this.getMatrix());
-
-        if (n < 0) {
-
-        } else if (n == 0) {
+        if(n < 0) {
+            throw new IllegalArgumentException("You must not use negative exponents.");
+        }else if (n == 0) {
             return new IdentityMatrix(this.getRows());
         } else {
+            Matrix fin = new QuadraticMatrix(this.getMatrix());
             for (int i = 0; i < n; i++) {
                 fin = fin.multiply(this);
             }
+            return fin;
         }
-        return fin;
     }
 
+    /**
+     * Turns the object into a string
+     * @return string of obj
+     */
     @Override
     public String toString() {
-        return "QuadraticMatrix{" + super.toString() + "}";
+        return "QuadraticMatrix : " + super.toString();
     }
+
 }

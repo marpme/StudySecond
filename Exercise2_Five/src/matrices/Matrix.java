@@ -9,6 +9,7 @@ import java.util.Arrays;
  */
 public class Matrix {
 
+    //region fields
 
     /**
      * contains the rows count
@@ -23,9 +24,11 @@ public class Matrix {
     /**
      * Stores every value of the matrix
      */
-    private float[][] matrix;
+    private double[][] matrix;
 
+    //endregion
 
+    //region getter/setter
     /**
      * Getter for n
      *
@@ -47,19 +50,19 @@ public class Matrix {
     /**
      * Getter for Matrix components
      *
-     * @return components as two-dimensional float-array
+     * @return components as two-dimensional double-array
      */
-    public float[][] getMatrix() {
-        return matrix;
+    public double[][] getMatrix() {
+        return matrix.clone();
     }
 
     /**
-     * Sets every component with the float[][] parameter
-     * @param arr float[][]
+     * Sets every component with the double[][] parameter
+     * @param arr double[][]
      */
-    public void setMatrix(float[][] arr) {
+    public void setMatrix(double[][] arr) {
 
-        for (float[] a : arr) {
+        for (double[] a : arr) {
             if (a.length != getColumns()) throw new IndexOutOfBoundsException();
         }
 
@@ -72,25 +75,27 @@ public class Matrix {
      * @param i higher index
      * @param j lower index
      */
-    public void setMatrix(float val, int i, int j) {
+    public void setMatrix(double val, int i, int j) {
         this.matrix[i][j] = val;
     }
+    //endregion
 
+    //region constructor
     /**
      * custom constructor for the Matrix class
      *
-     * @param a two-dimensional float array
+     * @param a two-dimensional double array
      */
-    public Matrix(float[][] a) {
+    public Matrix(double[][] a) {
 
         rows = a.length;
         int len = a[0].length;
 
         /*
-            The float-array must have the same deep-dimensions in every upper dimension.
+            The double-array must have the same deep-dimensions in every upper dimension.
             (squared array needed, otherwise an error will be thrown)
          */
-        for (float[] b : a) {
+        for (double[] b : a) {
             if (len != b.length) {
                 throw new IndexOutOfBoundsException();
             }
@@ -101,26 +106,32 @@ public class Matrix {
     }
 
     /**
+     * Creates Matrix with the size and filled with zeros
+     */
+    public Matrix(int r, int c) {
+        if( (r <= 0 || c <= 0) || (r == 1 && c == 1) ){
+            throw new IllegalArgumentException("Matrix size must be higher than 0 and not 1x1!");
+        }
+
+        rows = r;
+        columns = c;
+
+        double[][] IdMatrix = new double[r][c];
+
+        this.matrix = Arrays.copyOf(IdMatrix, IdMatrix.length);
+    }
+
+    /**
      * standard constructor if no parameters are given
      */
     public Matrix() {
         rows = 2;
         columns = 2;
-        matrix = new float[][]{{0, 0}, {0, 0}};
+        matrix = new double[][]{{0, 0}, {0, 0}};
     }
+    //endregion
 
-    /**
-     * Creates Matrix with the size and filled with zeros
-     */
-    public Matrix(int r, int c) {
-        rows = r;
-        columns = c;
-
-        float[][] IdMatrix = new float[r][c];
-
-        this.matrix = Arrays.copyOf(IdMatrix, IdMatrix.length);
-    }
-
+    //region public methods
     /**
      * Checks if the Matrix is equal to another one
      *
@@ -157,7 +168,7 @@ public class Matrix {
             throw new IndexOutOfBoundsException();
         }
 
-        float[][] end = new float[this.rows][this.columns];
+        double[][] end = new double[this.rows][this.columns];
 
         // adds all rows and column values to each other
         for (int i = 0; i < matrix.length; i++) {
@@ -174,11 +185,11 @@ public class Matrix {
     /**
      * Multiplies a Matrix with a given scalar
      *
-     * @param a scalar as float
+     * @param a scalar as double
      * @return the multiplied Matrix
      */
-    public Matrix multiplyScalar(float a) {
-        float[][] end = Arrays.copyOf(matrix, matrix.length);
+    public Matrix multiplyScalar(double a) {
+        double[][] end = Arrays.copyOf(matrix, matrix.length);
 
         // goes through all values and multiply them with the scalar
         for (int i = 0; i < matrix.length; i++) {
@@ -197,11 +208,11 @@ public class Matrix {
      * @return the new multiplied one
      */
     public Matrix multiply(Matrix a) {
-        float[][] end = new float[rows][a.getColumns()];
+        double[][] end = new double[rows][a.getColumns()];
 
         // checks if matrix are multipliable
         if (columns == a.rows) {
-            // multiplies every float value from rows with the expected column values.
+            // multiplies every double value from rows with the expected column values.
             for (int y = 0; y < a.columns; y++) {
                 for (int x = 0; x < rows; x++) {
                     for (int i = 0; i < matrix[x].length; i++) {
@@ -210,7 +221,7 @@ public class Matrix {
                 }
             }
         } else {
-            throw new ArithmeticException();
+            throw new ArithmeticException("You cannot multiply matrix with wrong dimensions (columns == rows)");
         }
 
         return new Matrix(end);
@@ -226,7 +237,7 @@ public class Matrix {
 
         //gets all deep values and turn them into a string
         String output = "";
-        for (float[] a : matrix) {
+        for (double[] a : matrix) {
             output += "   " + Arrays.toString(a) + "; \n";
         }
 
@@ -237,8 +248,9 @@ public class Matrix {
                 ", matrix={ \n" + output +
                 '}';
     }
+    //endregion
 
-
+    //region private methods
     /**
      * Checks if the Matrix has the same dimension as the parameter matrix
      *
@@ -252,5 +264,6 @@ public class Matrix {
          */
         return this.columns == a.getColumns() && this.rows == a.getRows();
     }
+    //endregion
 
 }

@@ -1,30 +1,37 @@
 package matrices;
 
 /**
- * Created by marvinpiekarek on 17/11/2016.
+ * Identity class (mathematics matrix)
+ *
+ * @author Marvin Piekarek
  */
 public class IdentityMatrix extends Matrix {
 
-    @Override
-    public String toString() {
-        return "IdentityMatrix{" +
-                super.toString() +
-                "}";
-    }
-
+    /**
+     * The Identity Matrix constructor
+     * @param size int size of the matrix
+     */
     public IdentityMatrix(int size) {
         super(size, size);
 
-        float[][] fill = super.getMatrix();
-        for (int i = 0; i < fill.length; i++) {
-            for (int j = 0; j < fill[i].length; j++) {
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getColumns(); j++) {
                 if (j == i) {
-                    fill[i][j] = 1;
+                    setMatrix(1, i, j);
                 } else {
-                    fill[i][j] = 0;
+                    setMatrix(0, i, j);
                 }
             }
         }
+    }
+
+    /**
+     * Turns the object into a string
+     * @return the string
+     */
+    @Override
+    public String toString() {
+        return "IdentityMatrix : " + super.toString();
     }
 
 }
