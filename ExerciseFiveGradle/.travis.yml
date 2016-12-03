@@ -4,3 +4,6 @@ sudo: false # faster builds
 after-success:
   - if [ -e ./gradlew ]; then ./gradlew jacocoTestReport;else gradle jacocoTestReport;fi
   - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  slack: htw-ai:Ebrj2a4uCnDjcdWKRlCO6I95

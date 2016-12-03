@@ -8,7 +8,7 @@ import matrices.*;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.printf("Test is running ... ");
+        System.out.printf("Test is running ...%n");
         System.out.printf("Starting with Identity Matrix:%n");
         TestIdentityMatrix();
         System.out.printf("%nStarting the Vector test next:%n");

@@ -107,6 +107,11 @@ public class Matrix {
 
     /**
      * Creates Matrix with the size and filled with zeros
+     *
+     * @param r
+     *          count of rows
+     * @param c
+     *          count of columns
      */
     public Matrix(int r, int c) {
         if( (r <= 0 || c <= 0) || (r == 1 && c == 1) ){
@@ -117,6 +122,23 @@ public class Matrix {
         columns = c;
 
         double[][] IdMatrix = new double[r][c];
+
+        this.matrix = Arrays.copyOf(IdMatrix, IdMatrix.length);
+    }
+
+    /**
+     * Creates a quadratic matrix based on
+     * @param size int size of Matrix
+     */
+    public Matrix(int size) {
+        if( (size < 0) || (size == 1) ){
+            throw new IllegalArgumentException("Matrix size must be higher than 0 and not 1x1!");
+        }
+
+        rows = size;
+        columns = size;
+
+        double[][] IdMatrix = new double[size][size];
 
         this.matrix = Arrays.copyOf(IdMatrix, IdMatrix.length);
     }
@@ -263,6 +285,19 @@ public class Matrix {
            because the constructor checks it and there is no change in dimensions possible.
          */
         return this.columns == a.getColumns() && this.rows == a.getRows();
+    }
+    
+    private boolean isDeeQuadratic(double[][] a){
+
+        if ((a.length == a[0].length) && ()) {
+
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i].length
+            }
+        }
     }
     //endregion
 

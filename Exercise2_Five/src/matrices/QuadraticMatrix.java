@@ -12,13 +12,13 @@ public class QuadraticMatrix extends Matrix {
      * @param a double array
      */
     public QuadraticMatrix(double[][] a) {
-        super(a.length, a[0].length);
+        super(a.length);
         super.setMatrix(a);
     }
 
     /**
      * Calculates the power of the current object
-     * @param n value to power the matrix >= 0
+     * @param n value to power the matrix greater than 0
      * @return the powered matrix
      */
     public Matrix pow(int n) {
