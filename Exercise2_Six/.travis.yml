@@ -1,8 +1,10 @@
 language: java
+jdk:
+  - oraclejdk8
 script: ant reports
 
 notifications:
-  slack: htw-ai:nRNMESv7EpbtcdP28CeZKbfR
+  slack: htw-ai:Ebrj2a4uCnDjcdWKRlCO6I95
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

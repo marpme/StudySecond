@@ -3,30 +3,32 @@ package figures;
 /**
  * Created by marvinpiekarek on 25/11/2016.
  */
-public class Quadrat extends Figure {
+public class Quadrat extends Rectangle {
 
-    double len;
-
-    public Quadrat(Punkt anker, double len) {
-        super(anker);
-        this.len = len;
+    public Quadrat(Point anker, double len) {
+        super(anker, len, len);
     }
 
     public double getLen() {
-        return len;
-    }
-
-    public void setLen(double len) {
-        this.len = len;
+        return super.getLength();
     }
 
     @Override
-    public double calculateExtent() {
-        return len * 4;
+    public String toString() {
+        return "Quadrat{} " + super.toString();
+    }
+
+    public void setLen(double len) {
+        this.setLength(len);
+    }
+
+    @Override
+    public double calculateCircumference() {
+        return super.getLength() * 4;
     }
 
     @Override
     public double calculateArea() {
-        return len * len;
+        return super.getLength() * super.getLength();
     }
 }

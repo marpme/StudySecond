@@ -5,22 +5,33 @@ package figures;
  */
 abstract class Figure {
 
-    Punkt anker;
+    Point anker;
 
-    public Figure(Punkt anker) {
+    public Figure(Point anker) {
         this.anker = anker;
     }
 
-    public Punkt getAnker() {
+    public Point getAnker() {
         return anker;
     }
 
-    public void setAnker(Punkt anker) {
+    public void setAnker(Point anker) {
         this.anker = anker;
     }
 
-    public abstract double calculateExtent();
+    @Override
+    public String toString() {
+        return "Figure{" +
+                "anker=" + anker +
+                '}';
+    }
+
+    public abstract double calculateCircumference();
 
     public abstract double calculateArea();
+
+    public void moveAnker(double x, double y){
+        this.anker.move(x, y);
+    }
 
 }
