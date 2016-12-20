@@ -1,7 +1,7 @@
 package login;
 
 /**
- * Class description ...
+ * Login class
  * Included in login
  *
  * @author Marvin Piekarek (s0556014)
@@ -10,27 +10,44 @@ package login;
  */
 public class Login {
 
-    private boolean angemeldet;
+    private boolean isAuthenticated;
 
-    public void anmelden(String benutzer, String passwort) throws LoginException {
-        if(benutzer.equals("test") && passwort.equals("password")){
-            angemeldet = true;
+    /**
+     * Logs the user with his password in.
+     *
+     * @param user the provided username
+     * @param password the corresponding password
+     * @throws LoginException will be thrown, if username and password aren't matching.
+     */
+    public void login(String user, String password) throws LoginException {
+        if(user.equals("test") && password.equals("password")){
+            isAuthenticated = true;
         }else{
             throw new LoginException("Login failed. Wrong username or password.");
         }
     }
 
-    public void abmelden() {
-        if(angemeldet) {
-            angemeldet = false;
+    /**
+     * Logs you out.
+     */
+    public void logout() {
+        if(isAuthenticated) {
+            isAuthenticated = false;
         }
     }
 
-    public void bearbeiten() throws NoPermissionExecption {
-        if(angemeldet){
+    /**
+     * Working process
+     * Only accessible if you are logged in.
+     *
+     * @throws NoPermissionException will be throw if you try to use
+     *         this method while not being logged in.
+     */
+    public void working() throws NoPermissionException {
+        if(isAuthenticated){
             System.out.println("Working ...");
         }else {
-            throw new NoPermissionExecption("You've no permission to execute this method. Please login before.");
+            throw new NoPermissionException("You've no permission to execute this method. Please login before.");
         }
     }
 
