@@ -1,27 +1,27 @@
-package stack;
+package abstractDatatypes.stack;
 
-import list.Liste;
-import list.Node;
+import abstractDatatypes.list.List;
+import abstractDatatypes.list.Node;
 
 /**
  * Class description ...
- * Included in stack
+ * Included in abstractDatatypes.stack
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
  * @since 20. Dec 2016
  */
-public class Stack extends Liste implements StapelSchnittstelle {
+public class Stack extends List implements StapelSchnittstelle {
 
     /**
-     *
+     * Ctor
      */
     public Stack() {
         super();
     }
 
     /**
-     *
+     * Ctor
      * @param a
      */
     public Stack(int a) {
@@ -29,7 +29,7 @@ public class Stack extends Liste implements StapelSchnittstelle {
     }
 
     /**
-     *
+     * Ctor
      * @param a
      */
     public Stack(Node a) {
@@ -37,7 +37,7 @@ public class Stack extends Liste implements StapelSchnittstelle {
     }
 
     /**
-     *
+     * legt ein Element (mit einem gegebenen Wert) oben auf den Stack
      * @param a
      */
     @Override
@@ -46,14 +46,14 @@ public class Stack extends Liste implements StapelSchnittstelle {
     }
 
     /**
-     *
+     * liefert den Wert des obersten Elements des Stacks zurück
      * @return
      * @throws NullPointerException
      */
     @Override
     public int top() throws NullPointerException{
         if(this.isEmpty()){
-            throw new NullPointerException("Peek is not valid on an empty stack.");
+            throw new NullPointerException("Peek is not valid on an empty abstractDatatypes.stack.");
         }
 
         return this.get(0);
@@ -61,21 +61,21 @@ public class Stack extends Liste implements StapelSchnittstelle {
     }
 
     /**
-     *
+     * nimmt das oberste Element vom Stack herunter und gibt seinen Wert zurück
      * @return
      * @throws NullPointerException
      */
     @Override
     public int pop() throws NullPointerException {
         if(this.isEmpty()){
-            throw new NullPointerException("Pop is not valid on an empty stack.");
+            throw new NullPointerException("Pop is not valid on an empty abstractDatatypes.stack.");
         }
 
         return this.removeFirst();
     }
 
     /**
-     *
+     * liefert true zurück, wenn der Stack leer ist
      * @return
      */
     @Override

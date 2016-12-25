@@ -1,8 +1,8 @@
-package stack;
+package abstractDatatypes.stack;
 
 /**
  * Class description ...
- * Included in stack
+ * Included in abstractDatatypes.stack
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
