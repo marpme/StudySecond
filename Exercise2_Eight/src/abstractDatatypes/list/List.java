@@ -48,7 +48,7 @@ public class List implements AbstrakteListe {
     /**
      * Berechnet die Länge der List
      *
-     * @return L�nge der List
+     * @return Länge der List
      */
     @Override
     public int size() {
@@ -56,7 +56,7 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     * pr�ft, ob ein gegebener Wert in der List vorhanden ist
+     * prüft, ob ein gegebener Wert in der List vorhanden ist
      *
      * @param wert gesuchter Wert
      * @return true, wenn gesuchter Wert in der List vorhanden
@@ -84,18 +84,18 @@ public class List implements AbstrakteListe {
      */
     @Override
     public int get(int index) throws NullPointerException {
-        if(index < 0 || this.size() <= index) {
+        if(index < 1 || this.size() < index) {
             throw new NullPointerException("Index out of bounds.");
         }
 
         Node temp = head;
-        int co = 0;
+        int co = 1;
         while(temp != null){
-            co++;
             if(index == co){
-                return head.data;
+                return temp.data;
             }
             temp = temp.next;
+            co++;
         }
 
         throw new NullPointerException("Index not part of bounds.");
@@ -103,21 +103,21 @@ public class List implements AbstrakteListe {
 
     /**
      * setzt den Wert eines Elementes am gegebenen Index auf einen neuen Wert (Schreiben)
-     * und gibt den alten �berschriebenen Wert des Elements zur�ck
+     * und gibt den alten überschriebenen Wert des Elements zurück
      *
      * @param wert  neuer Wert
-     * @param index Index, an dem der Wert �berschrieben werden soll
+     * @param index Index, an dem der Wert überschrieben werden soll
      * @return alter überschriebener Wert
      * @throws NullPointerException wenn Index in der List nicht vorhanden ist
      */
     @Override
     public int set(int wert, int index) throws NullPointerException {
-        if(index < 0 || this.size() <= index) {
+        if(index < 1 || this.size() <= index) {
             throw new NullPointerException("Index out of bounds.");
         }
 
         Node temp = head;
-        int co = 0;
+        int co = 1;
         while(temp != null){
             co++;
             if(index == co){
@@ -132,54 +132,78 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     * f�gt einen Wert an den Anfang der List ein
+     * fügt einen Wert an den Anfang der List ein
      *
-     * @param wert der einzuf�gende Wert
+     * @param wert der einzufügende Wert
      */
     @Override
     public void addFirst(int wert) {
-        Node a = new Node(wert);
-        a.next = head;
-        head = a;
-        counter++;
+        if(head == null){
+            head = new Node(wert);
+        }else{
+            Node a = new Node(wert);
+            a.next = head;
+            head = a;
+        }
+        this.counter++;
     }
 
     /**
-     * f�gt einen Wert ans Ende der List ein
+     * fügt einen Wert ans Ende der List ein
      *
-     * @param wert der einzuf�gende Wert
+     * @param wert der einzufügende Wert
      */
     @Override
     public void addLast(int wert) {
-        Node a = new Node(wert);
-        Node temp = head;
 
-        while(hasNext(temp)){
-            temp = temp.next;
+        if(head == null){
+            head = new Node(wert);
+        } else {
+            Node a = new Node(wert);
+            Node temp = head;
+
+            while(temp.hasNext()){
+                temp = temp.next;
+            }
+
+            temp.next = a;
         }
-        counter++;
-        temp.next = a;
+        this.counter++;
     }
 
     /**
-     * f�gt einen Wert am gegebenen Index in die List ein
+     * fügt einen Wert am gegebenen Index in die List ein
      *
-     * @param wert  der einzuf�gende Wert
-     * @param index Index, an dem das neue Element eingef�gt werden soll
-     * @return true, wenn das Element am gegebenen Index erfolgreich eingef�gt wurde
+     * @param wert  der einzufügende Wert
+     * @param index Index, an dem das neue Element eingefügt werden soll
+     * @return true, wenn das Element am gegebenen Index erfolgreich eingefügt wurde
      */
     @Override
     public boolean add(int wert, int index) {
         Node temp = head;
         int co = 0;
 
-        while(temp != null){
-            co++;
-            if(index-1 == co){
-                Node add = new Node(wert);
-                add.next = temp.next;
+        if(index <= 1){
+            addFirst(wert);
+            return true;
+        }else if(counter > index){
+            while (temp != null) {
+                if (index - 1 == co) {
+                    Node add = new Node(wert);
+                    add.next = temp.next;
+                    temp.next = add;
+                    this.counter++;
+                    return true;
+                }
+                co++;
             }
+
+        }else if(counter == index){
+            addLast(wert);
+            return true;
         }
+
+        return false;
     }
 
     /**
@@ -190,6 +214,19 @@ public class List implements AbstrakteListe {
      */
     @Override
     public boolean remove(int wert) {
+        if(head == null){
+            return false;
+        }
+
+        Node temp = head;
+        while(temp != null){
+            if(temp.hasNext() && temp.next.data == wert){
+                temp.next = temp.next.next;
+                return true;
+            }
+            temp = temp.next;
+        }
+
         return false;
     }
 
@@ -201,7 +238,14 @@ public class List implements AbstrakteListe {
      */
     @Override
     public int removeFirst() throws NullPointerException {
-        return 0;
+        if(head == null){
+            throw new NullPointerException("List is already empty.");
+        }
+
+        int a = head.data;
+        head = head.next;
+        this.counter--;
+        return a;
     }
 
     /**
@@ -212,7 +256,23 @@ public class List implements AbstrakteListe {
      */
     @Override
     public int removeLast() throws NullPointerException {
-        return 0;
+        Node temp = head;
+        if(temp == null){
+            throw new NullPointerException("List is empty.");
+        }
+
+        int a;
+
+        while(temp != null){
+            if(temp.hasNext() && !temp.next.hasNext()){
+                a = temp.next.data;
+                temp.next = null;
+                this.counter--;
+                return a;
+            }
+            temp = temp.next;
+        }
+        throw new NullPointerException("wasn't able to remove last ...");
     }
 
     /**
@@ -224,7 +284,29 @@ public class List implements AbstrakteListe {
      */
     @Override
     public int removeAtIndex(int index) throws NullPointerException {
-        return 0;
+        if(head == null){
+            throw new NullPointerException("List is already empty.");
+        }
+
+        if(index <= 1){
+            return removeFirst();
+        }else if(index == size()){
+            return removeLast();
+        }else{
+            Node temp = head;
+            int co = 1;
+            while(temp != null){
+                if(index - 1 == co){
+                    int a = temp.next.data;
+                    temp.next = temp.next.next;
+                    this.counter--;
+                    return a;
+                }
+                temp = temp.next;
+            }
+        }
+
+        throw new NullPointerException("Index was out of bounds.");
     }
 
     /**
@@ -233,16 +315,13 @@ public class List implements AbstrakteListe {
      */
     @Override
     public String toString() {
-        // TODO to string
-        return "";
+        String a = "[";
+        Node temp = head;
+        while(temp != null){
+            a += " " + temp.data;
+            temp = temp.next;
+        }
+        return  a + " ]";
     }
 
-    /**
-     *
-     * @param a
-     * @return
-     */
-    private boolean hasNext(Node a){
-        return a.next != null;
-    }
 }

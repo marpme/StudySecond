@@ -15,6 +15,14 @@ public class Node {
 	 */
 	Node next;
 
+	@Override
+	public String toString() {
+		return "Node{" +
+				"data=" + data +
+				", next=" + next +
+				'}';
+	}
+
 	/**
 	 * CTOR
 	 * @param d Integer value
@@ -22,5 +30,9 @@ public class Node {
 	public Node(int d) {
 		data = d;
 		next = null;
+	}
+
+	public boolean hasNext(){
+		return this.next != null;
 	}
 }

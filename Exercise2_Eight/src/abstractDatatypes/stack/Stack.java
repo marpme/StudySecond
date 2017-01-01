@@ -56,7 +56,7 @@ public class Stack extends List implements StapelSchnittstelle {
             throw new NullPointerException("Peek is not valid on an empty abstractDatatypes.stack.");
         }
 
-        return this.get(0);
+        return this.get(1);
 
     }
 
@@ -81,5 +81,15 @@ public class Stack extends List implements StapelSchnittstelle {
     @Override
     public boolean isEmpty(){
         return this.size() == 0;
+    }
+
+    @Override
+    public String toString() {
+        String a = "";
+        for (int i = 1; i <= size(); i++){
+            a += "** " + super.get(i) + " **\n";
+        }
+        a += "*******";
+        return a;
     }
 }

@@ -34,6 +34,8 @@ private static String lab = "###########\n" +
         for (int i = 0; i < k.length; i++) {
             System.out.println(Arrays.toString(k[i]));
         }
+
+        Labyrinth lab = new Labyrinth(k, c, columns);
     }
 
 }

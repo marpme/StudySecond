@@ -12,12 +12,6 @@ import abstractDatatypes.list.List;
  */
 public class Queue extends List implements QueueSchnittstelle {
 
-    private List queue;
-
-    public Queue(){
-        queue = new List();
-    }
-
     /**
      * fügt ein Element (mit einem gegebenen Wert) ans Ende der Warteschlange hinzu
      *
@@ -25,7 +19,7 @@ public class Queue extends List implements QueueSchnittstelle {
      */
     @Override
     public void enqueue(int a) {
-
+        super.addLast(a);
     }
 
     /**
@@ -35,7 +29,7 @@ public class Queue extends List implements QueueSchnittstelle {
      */
     @Override
     public int dequeue() {
-        return 0;
+        return removeFirst();
     }
 
     /**
@@ -45,7 +39,7 @@ public class Queue extends List implements QueueSchnittstelle {
      */
     @Override
     public int first() {
-        return 0;
+        return get(size());
     }
 
     /**
@@ -55,6 +49,16 @@ public class Queue extends List implements QueueSchnittstelle {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size()==0;
+    }
+
+    @Override
+    public String toString() {
+        String a = "<--- ";
+        for (int i = 1; i <= size(); i++) {
+            a += get(i) + " ";
+        }
+        a += "<---";
+        return a;
     }
 }

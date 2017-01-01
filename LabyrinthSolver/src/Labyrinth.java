@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Class description ...
@@ -15,13 +14,13 @@ public class Labyrinth {
 
     private Vector playerPos;
 
-    private Vector[] points;
+    private Map<Character, Vector> points;
 
     private int boundRow, boundColumn;
 
     public Labyrinth(char[][] lab, int boundRow, int boundColumn){
         laby = lab;
-        points = new Vector[8];
+        points = new HashMap<>();
         this.boundRow = boundRow;
         this.boundColumn = boundColumn;
 
@@ -29,7 +28,8 @@ public class Labyrinth {
             for (int j = 0; j < boundColumn; j++) {
                 switch (laby[i][j]){
                     case '0':
-                        playerPos = new Vector(i, j);
+                        points.put('0', new Vector(j,i));
+                        playerPos = new Vector(j, i);
                         break;
                     case '1':
                     case '2':
@@ -38,19 +38,60 @@ public class Labyrinth {
                     case '5':
                     case '6':
                     case '7':
-                        points[Integer.parseInt(Character.toString(laby[i][j]))] = new Vector(i,j);
+                        points.put(laby[i][j], new Vector(j,i));
                 }
             }
         }
+
+        System.out.println(playerPos);
+        System.out.println(points);
+        System.out.println(laby[1][9]);
+
+        lengthToPoint(points.get('0'), points.get('1'), 0);
+
     }
 
-    private boolean isFree(char k){
-        return k != '#';
+    private boolean isFree(Vector z, Vector k){
+        return charAtPos(z.add(k)) != '#';
+    }
+
+    private char charAtPos(Vector pos){
+        return laby[pos.y][pos.x];
     }
 
     private boolean isNumber(int i, char k){
         return Character.toString(k).equals(Integer.toString(i));
     }
 
+    private int distance(Vector a, Vector b){
+        float x = a.x - b.x;
+        float y = a.y - b.y;
+        double dist = Math.sqrt(x*x + y*y);
+        return dist < 0 ? (int)-dist : (int)dist;
+    }
+
+    public int lengthToPoint(Vector from, Vector to, int count){
+        if(from.equals(to)){
+            return count;
+        }
+
+        if(isFree(from, Vector.leftMove())){
+            lengthToPoint(from.add(Vector.leftMove()), to, ++count);
+        }
+
+        if(isFree(from, Vector.rightMove())){
+            lengthToPoint(from.add(Vector.rightMove()), to, ++count);
+        }
+
+        if(isFree(from, Vector.bottomMove())){
+            lengthToPoint(from.add(Vector.bottomMove()), to, ++count);
+        }
+
+        if(isFree(from, Vector.topMove())){
+            lengthToPoint(from.add(Vector.topMove()), to, ++count);
+        }
+
+        return 0;
+    }
 
 }
