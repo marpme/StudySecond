@@ -1,16 +1,16 @@
-package abstractDatatypes.queue;
+package collections.queue;
 
-import abstractDatatypes.list.List;
+import collections.list.Liste;
 
 /**
- * Class description ...
- * Included in abstractDatatypes.queue
+ * Warteschlange(Warteschlange)
+ * Included in collections.queue
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
  * @since 20. Dec 2016
  */
-public class Queue extends List implements QueueSchnittstelle {
+public class Warteschlange extends Liste implements WarteschlangenSchnittstellen {
 
     /**
      * fügt ein Element (mit einem gegebenen Wert) ans Ende der Warteschlange hinzu
@@ -25,7 +25,7 @@ public class Queue extends List implements QueueSchnittstelle {
     /**
      * entnimmt das erste Element aus der Warteschlange und liefert seinen Wert zurück
      *
-     * @return integer
+     * @return int
      */
     @Override
     public int dequeue() {
@@ -52,6 +52,10 @@ public class Queue extends List implements QueueSchnittstelle {
         return size()==0;
     }
 
+    /**
+     * toString methode
+     * @return ein String des Objektes
+     */
     @Override
     public String toString() {
         String a = "<--- ";

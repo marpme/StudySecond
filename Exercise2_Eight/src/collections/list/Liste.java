@@ -1,65 +1,64 @@
-package abstractDatatypes.list;
+package collections.list;
 
 /**
- * Class description ...
- * Included in abstractDatatypes.list
+ * Integer Liste (collection) which starts at index 1 to index x
+ * Included in collections.list
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
  * @since 20. Dec 2016
  */
-public class List implements AbstrakteListe {
+public class Liste implements AbstrakteListe {
 
     /**
-     *
+     *  Header node
      */
     private Node head;
 
     /**
-     *
+     * integer size of list
      */
-    private int counter = 0;
+    private int size = 0;
 
     /**
-     *
-     * @param a
+     * Ctor with first int
+     * @param a init integer value
      */
-    public List(int a) {
-        this.head = new Node(a);
-        this.counter = 1;
+    public Liste(int a) {
+        this.addFirst(a);
     }
 
     /**
-     *
-     * @param a
+     * Ctor with a init node
+     * @param a a node
      */
-    public List(Node a) {
+    public Liste(Node a) {
         this.head = a;
-        this.counter = 1;
+        this.size = 1;
     }
 
     /**
-     *
+     *  Ctor for empty list
      */
-    public List() {
+    public Liste() {
         head = null;
     }
 
     /**
-     * Berechnet die Länge der List
+     * Berechnet die Länge der Liste
      *
-     * @return Länge der List
+     * @return Länge der Liste
      */
     @Override
     public int size() {
-        return counter;
+        return size;
     }
 
     /**
-     * prüft, ob ein gegebener Wert in der List vorhanden ist
+     * prüft, ob ein gegebener Wert in der Liste vorhanden ist
      *
      * @param wert gesuchter Wert
-     * @return true, wenn gesuchter Wert in der List vorhanden
+     * @return true, wenn gesuchter Wert in der Liste vorhanden
      */
     @Override
     public boolean contains(int wert) {
@@ -80,7 +79,7 @@ public class List implements AbstrakteListe {
      *
      * @param index gefragter Index
      * @return Wert des Elements am gefragten Index
-     * @throws NullPointerException wenn Index in der List nicht vorhanden ist
+     * @throws NullPointerException wenn Index in der Liste nicht vorhanden ist
      */
     @Override
     public int get(int index) throws NullPointerException {
@@ -108,7 +107,7 @@ public class List implements AbstrakteListe {
      * @param wert  neuer Wert
      * @param index Index, an dem der Wert überschrieben werden soll
      * @return alter überschriebener Wert
-     * @throws NullPointerException wenn Index in der List nicht vorhanden ist
+     * @throws NullPointerException wenn Index in der Liste nicht vorhanden ist
      */
     @Override
     public int set(int wert, int index) throws NullPointerException {
@@ -132,7 +131,7 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     * fügt einen Wert an den Anfang der List ein
+     * fügt einen Wert an den Anfang der Liste ein
      *
      * @param wert der einzufügende Wert
      */
@@ -145,11 +144,11 @@ public class List implements AbstrakteListe {
             a.next = head;
             head = a;
         }
-        this.counter++;
+        this.size++;
     }
 
     /**
-     * fügt einen Wert ans Ende der List ein
+     * fügt einen Wert ans Ende der Liste ein
      *
      * @param wert der einzufügende Wert
      */
@@ -168,11 +167,11 @@ public class List implements AbstrakteListe {
 
             temp.next = a;
         }
-        this.counter++;
+        this.size++;
     }
 
     /**
-     * fügt einen Wert am gegebenen Index in die List ein
+     * fügt einen Wert am gegebenen Index in die Liste ein
      *
      * @param wert  der einzufügende Wert
      * @param index Index, an dem das neue Element eingefügt werden soll
@@ -186,19 +185,19 @@ public class List implements AbstrakteListe {
         if(index <= 1){
             addFirst(wert);
             return true;
-        }else if(counter > index){
+        }else if(size > index){
             while (temp != null) {
                 if (index - 1 == co) {
                     Node add = new Node(wert);
                     add.next = temp.next;
                     temp.next = add;
-                    this.counter++;
+                    this.size++;
                     return true;
                 }
                 co++;
             }
 
-        }else if(counter == index){
+        }else if(size == index){
             addLast(wert);
             return true;
         }
@@ -207,10 +206,10 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     * entfernt ein Element mit gegebenem Wert aus der List
+     * entfernt ein Element mit gegebenem Wert aus der Liste
      *
      * @param wert zu entfernende Wert
-     * @return true, wenn Element mit gegebenem Wert gefunden und aus der List entfernt wurde
+     * @return true, wenn Element mit gegebenem Wert gefunden und aus der Liste entfernt wurde
      */
     @Override
     public boolean remove(int wert) {
@@ -231,34 +230,34 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     * entfernt das erste Element aus der List
+     * entfernt das erste Element aus der Liste
      *
      * @return Wert des entfernten Elements
-     * @throws NullPointerException wenn List leer
+     * @throws NullPointerException wenn Liste leer
      */
     @Override
     public int removeFirst() throws NullPointerException {
         if(head == null){
-            throw new NullPointerException("List is already empty.");
+            throw new NullPointerException("Liste is already empty.");
         }
 
         int a = head.data;
         head = head.next;
-        this.counter--;
+        this.size--;
         return a;
     }
 
     /**
-     * entfernt das letzte Element aus der List
+     * entfernt das letzte Element aus der Liste
      *
      * @return Wert des entfernten Elements
-     * @throws NullPointerException wenn List leer
+     * @throws NullPointerException wenn Liste leer
      */
     @Override
     public int removeLast() throws NullPointerException {
         Node temp = head;
         if(temp == null){
-            throw new NullPointerException("List is empty.");
+            throw new NullPointerException("Liste is empty.");
         }
 
         int a;
@@ -267,7 +266,7 @@ public class List implements AbstrakteListe {
             if(temp.hasNext() && !temp.next.hasNext()){
                 a = temp.next.data;
                 temp.next = null;
-                this.counter--;
+                this.size--;
                 return a;
             }
             temp = temp.next;
@@ -276,16 +275,16 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     * entfernt das Element am gegebenen Index aus der List
+     * entfernt das Element am gegebenen Index aus der Liste
      *
      * @param index Index, an dem das Element entfernt werden soll
      * @return Wert des entfernten Elements
-     * @throws NullPointerException wenn Index in der List nicht vorhanden
+     * @throws NullPointerException wenn Index in der Liste nicht vorhanden
      */
     @Override
     public int removeAtIndex(int index) throws NullPointerException {
         if(head == null){
-            throw new NullPointerException("List is already empty.");
+            throw new NullPointerException("Liste is already empty.");
         }
 
         if(index <= 1){
@@ -299,7 +298,7 @@ public class List implements AbstrakteListe {
                 if(index - 1 == co){
                     int a = temp.next.data;
                     temp.next = temp.next.next;
-                    this.counter--;
+                    this.size--;
                     return a;
                 }
                 temp = temp.next;
@@ -310,8 +309,8 @@ public class List implements AbstrakteListe {
     }
 
     /**
-     *
-     * @return
+     * to string method
+     * @return a string of the object.
      */
     @Override
     public String toString() {

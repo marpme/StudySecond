@@ -1,14 +1,14 @@
-package abstractDatatypes.queue;
+package collections.queue;
 
 /**
  * Class description ...
- * Included in abstractDatatypes.queue
+ * Included in collections.queue
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
  * @since 22. Dec 2016
  */
-public interface QueueSchnittstelle {
+public interface WarteschlangenSchnittstellen {
 
     /**
      * fügt ein Element (mit einem gegebenen Wert) ans Ende der Warteschlange hinzu
