@@ -2,7 +2,7 @@ import binaryTree.BinaryNode;
 import binaryTree.BinaryTree;
 
 /**
- * Class description ...
+ * Entry binary tree - ad-hoc testing purposes.
  * Included in PACKAGE_NAME
  *
  * @author Marvin Piekarek (s0556014)
