@@ -46,12 +46,22 @@ public class BinaryTreeTest {
 
     @Test
     public void isTreeSorted() throws Exception {
-        // sorted one
         BinaryNode k1, k2, k3;
+        BinaryTree bt;
+        //given example tree
+        k1 = new BinaryNode(new BinaryNode(1), new BinaryNode(3), 2);
+        k2 = new BinaryNode(k1, new BinaryNode(5), 4);
+        k3 = new BinaryNode(new BinaryNode(8), null, 9);
+        BinaryNode finalNode = new BinaryNode(k2, k3, 7);
+        bt = new BinaryTree(finalNode);
+
+        assertTrue("The given example should be sorted.",bt.isTreeSorted());
+
+        // sorted one
         k1 = new BinaryNode(new BinaryNode(3), new BinaryNode(19), 14);
         k2 = new BinaryNode(new BinaryNode(14), new BinaryNode(18), 17);
         k3 = new BinaryNode(k1,k2, 15);
-        BinaryTree bt = new BinaryTree(k3);
+        bt = new BinaryTree(k3);
 
         assertTrue("The first example should be sorted.",bt.isTreeSorted());
 
@@ -78,7 +88,7 @@ public class BinaryTreeTest {
 
         // empty tree
         bt = new BinaryTree();
-        assertFalse("Binary shouldn't be sorted since it is empty.", bt.isTreeSorted());
+        assertTrue("Binary should be sorted since it is empty.", bt.isTreeSorted());
     }
 
 }
