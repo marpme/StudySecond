@@ -1,7 +1,7 @@
 package binaryTree;
 
 /**
- * Class description ...
+ * Node class for storing left and right node as a pair.
  * Included in binaryTree
  *
  * @author Marvin Piekarek (s0556014)
@@ -11,24 +11,25 @@ package binaryTree;
 public class BinaryNode {
 
     /**
-     *
+     * the left node.
      */
     private BinaryNode left;
 
     /**
-     *
+     * the right node.
      */
     private BinaryNode right;
 
     /**
-     *
+     * the node data.
      */
     private int data;
 
     /**
-     *
-     * @param left
-     * @param right
+     * Ctor with given left and right node and an Integer value.
+     * @param left the left node.
+     * @param right the right node.
+     * @param value an integer value.
      */
     public BinaryNode(BinaryNode left, BinaryNode right, int value){
         this.data = value;
@@ -37,7 +38,8 @@ public class BinaryNode {
     }
 
     /**
-     *
+     * Ctor with given Integer value
+     * left and right node will be null
      */
     public BinaryNode(int a){
         this.data = a;
@@ -45,7 +47,7 @@ public class BinaryNode {
     }
 
     /**
-     *
+     * Ctor with out parameters
      */
     public BinaryNode(){
         this.data = 0;
@@ -53,66 +55,66 @@ public class BinaryNode {
     }
 
     /**
-     *
-     * @return
+     * Gets the right node from the current object.
+     * @return null if not present or the node.
      */
     public BinaryNode getRight(){
         return this.right;
     }
 
     /**
-     *
-     * @return
+     * Gets the left node from the current object.
+     * @return null if not present or the node.
      */
     public BinaryNode getLeft() {
         return this.left;
     }
 
     /**
-     *
-     * @return
+     * Gets the data from the current object.
+     * @return an Integer value
      */
     public int getData() {
         return data;
     }
 
     /**
-     *
-     * @return
+     * Check if a left node is present.
+     * @return true if present and false if not.
      */
     public boolean hasLeft(){
         return this.left != null;
     }
 
     /**
-     *
-     * @return
+     * Check if a right node is present.
+     * @return true if present and false if not.
      */
     public boolean hasRight(){
         return this.right != null;
     }
 
     /**
-     *
-     * @return
+     * Check if a left and right node is null (Leave requirement)
+     * @return true if none is present and false if one of them is.
      */
     public boolean isLeave(){
         return (this.right == null) && (this.left == null);
     }
 
     /**
-     *
-     * @return
+     * Checks if the current node is sorted (k > left) && (k < right)
+     * @return true if sorted and false if not.
      */
     public boolean isSorted(){
         if(this.isLeave()){
             return true;
-        }else if(this.hasRight() && this.hasLeft()){
-            if(this.data <= right.data && this.data >= left.data) return true;
+        }else if(this.hasLeft() && this.hasRight()){
+            if(this.data >= this.getLeft().getData() && this.data <= this.getRight().getData()) return true;
         }else if(this.hasLeft()){
-            if(this.data >= left.data) return true;
+            if(this.data >= this.getLeft().getData()) return true;
         }else if(this.hasRight()){
-            if(this.data <= right.data) return true;
+            if(this.data <= this.getRight().getData()) return true;
         }
         return false;
     }

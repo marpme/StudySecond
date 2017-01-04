@@ -1,10 +1,7 @@
 package binaryTree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
- * Class description ...
+ * Binary tree class to structure data as a tree.
  * Included in binaryTree
  *
  * @author Marvin Piekarek (s0556014)
@@ -14,45 +11,46 @@ import java.util.Queue;
 public class BinaryTree {
 
     /**
-     *
+     * the root node.
      */
     private BinaryNode root;
 
     /**
-     *
+     * Ctor with no parameters
+     * Root node will be an empty node.
      */
     public BinaryTree() {
-        this.root = null;
+        this.root = new BinaryNode();
     }
 
     /**
-     *
-     * @param root
+     * Ctor with root node
+     * @param root the root node.
      */
     public BinaryTree(BinaryNode root) {
         this.root = root;
     }
 
     /**
-     *
-     * @return
+     * Checks if a binary tree is empty by checking the root node.
+     * @return true if empty and false if filled.
      */
     public boolean isNotEmpty(){
         return this.root != null;
     }
 
     /**
-     *
-     * @return
+     * Wrapper method for countLeaves (with root node)
+     * @return integer of counted leaves.
      */
     public int countLeavesOfTree(){
         return countLeaves(root);
     }
 
     /**
-     *
-     * @param k
-     * @return
+     * Counting leaves at a giving starting point.
+     * @param k the starting node.
+     * @return integer value of counted leaves.
      */
     private int countLeaves(BinaryNode k){
         if(k.isLeave()){
@@ -68,16 +66,23 @@ public class BinaryTree {
         return left + right;
     }
 
+    /**
+     * Public wrapper for isSorted, with root node
+     * @return true if sorted and false if not.
+     */
     public boolean isTreeSorted(){
         return isSorted(root);
     }
 
     /**
-     *
-     * @return
+     * Check if the current node is sorted.
+     * @return true if sorted and false if not.
      */
     private boolean isSorted(BinaryNode k){
-        if(k.isLeave()) return true;
+        if(k == null)
+            return false;
+        else if(k.isLeave())
+            return true;
 
         boolean nSort = k.isSorted();
         if(k.hasLeft())
