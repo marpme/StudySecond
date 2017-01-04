@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
- * @since 03. Jan 2017
+ * @since 04. Jan 2017
  */
 public class BinaryTreeTest {
 
@@ -26,12 +26,12 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void countLeaves() throws Exception {
+    public void countLeavesOfTree() throws Exception {
 
     }
 
     @Test
-    public void isSorted() throws Exception {
+    public void isTreeSorted() throws Exception {
 
     }
 

@@ -30,8 +30,10 @@ public class BinaryNode {
      * @param left
      * @param right
      */
-    public BinaryNode(BinaryNode left, BinaryNode right){
-
+    public BinaryNode(BinaryNode left, BinaryNode right, int value){
+        this.data = value;
+        this.left = left;
+        this.right = right;
     }
 
     /**
@@ -70,6 +72,14 @@ public class BinaryNode {
      *
      * @return
      */
+    public int getData() {
+        return data;
+    }
+
+    /**
+     *
+     * @return
+     */
     public boolean hasLeft(){
         return this.left != null;
     }
@@ -80,5 +90,30 @@ public class BinaryNode {
      */
     public boolean hasRight(){
         return this.right != null;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isLeave(){
+        return (this.right == null) && (this.left == null);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean isSorted(){
+        if(this.isLeave()){
+            return true;
+        }else if(this.hasRight() && this.hasLeft()){
+            if(this.data <= right.data && this.data >= left.data) return true;
+        }else if(this.hasLeft()){
+            if(this.data >= left.data) return true;
+        }else if(this.hasRight()){
+            if(this.data <= right.data) return true;
+        }
+        return false;
     }
 }

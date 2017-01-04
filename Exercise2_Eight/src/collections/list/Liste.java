@@ -215,17 +215,24 @@ public class Liste implements AbstrakteListe {
     public boolean remove(int wert) {
         if(head == null){
             return false;
-        }
-
-        Node temp = head;
-        while(temp != null){
-            if(temp.hasNext() && temp.next.data == wert){
-                temp.next = temp.next.next;
+        }else if(head.data == wert){
+            if(head.hasNext()){
+                head = head.next;
+                return true;
+            }else{
+                head = null;
                 return true;
             }
-            temp = temp.next;
+        }else{
+            Node temp = head;
+            while(temp != null){
+                if(temp.hasNext() && temp.data == wert){
+                    temp = temp.next;
+                    return true;
+                }
+                temp = temp.next;
+            }
         }
-
         return false;
     }
 

@@ -11,21 +11,12 @@ import static org.junit.Assert.*;
  *
  * @author Marvin Piekarek (s0556014)
  * @version 1.0
- * @since 03. Jan 2017
+ * @since 04. Jan 2017
  */
 public class BinaryNodeTest {
+
     @Before
     public void setUp() throws Exception {
-
-    }
-
-    @Test
-    public void getRight() throws Exception {
-
-    }
-
-    @Test
-    public void getLeft() throws Exception {
 
     }
 
@@ -36,6 +27,16 @@ public class BinaryNodeTest {
 
     @Test
     public void hasRight() throws Exception {
+
+    }
+
+    @Test
+    public void isLeave() throws Exception {
+
+    }
+
+    @Test
+    public void isSorted() throws Exception {
 
     }
 
