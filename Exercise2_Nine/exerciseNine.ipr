@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="exerciseNine_main" target="1.5" />
-      <module name="exerciseNine_test" target="1.5" />
+      <module name="exerciseNine_main" target="1.8" />
+      <module name="exerciseNine_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="GradleLocalSettings">
