@@ -1,4 +1,4 @@
-package collections.list;
+package stapel_warteschlange.list;
 
 /**
  * Integer Liste (collection) which starts at index 1 to index x
@@ -8,12 +8,12 @@ package collections.list;
  * @version 1.0
  * @since 20. Dec 2016
  */
-public class Liste implements AbstrakteListe {
+public class Liste<E> implements AbstrakteListe<E> {
 
     /**
      *  Header node
      */
-    private Node head;
+    private Node<E> head;
 
     /**
      * integer size of list
@@ -24,7 +24,7 @@ public class Liste implements AbstrakteListe {
      * Ctor with first int
      * @param a init integer value
      */
-    public Liste(int a) {
+    public Liste(E a) {
         this.addFirst(a);
     }
 
@@ -61,7 +61,7 @@ public class Liste implements AbstrakteListe {
      * @return true, wenn gesuchter Wert in der Liste vorhanden
      */
     @Override
-    public boolean contains(int wert) {
+    public boolean contains(E wert) {
         Node temp = head;
 
         while(temp != null){
@@ -82,12 +82,12 @@ public class Liste implements AbstrakteListe {
      * @throws NullPointerException wenn Index in der Liste nicht vorhanden ist
      */
     @Override
-    public int get(int index) throws NullPointerException {
+    public E get(int index) throws NullPointerException {
         if(index < 1 || this.size() < index) {
             throw new NullPointerException("Index out of bounds.");
         }
 
-        Node temp = head;
+        Node<E> temp = head;
         int co = 1;
         while(temp != null){
             if(index == co){
@@ -110,17 +110,17 @@ public class Liste implements AbstrakteListe {
      * @throws NullPointerException wenn Index in der Liste nicht vorhanden ist
      */
     @Override
-    public int set(int wert, int index) throws NullPointerException {
+    public E set(E wert, int index) throws NullPointerException {
         if(index < 1 || this.size() <= index) {
             throw new NullPointerException("Index out of bounds.");
         }
 
-        Node temp = head;
+        Node<E> temp = head;
         int co = 1;
         while(temp != null){
             co++;
             if(index == co){
-                int val = temp.data;
+                E val = temp.data;
                 temp.data = wert;
                 return val;
             }
@@ -136,11 +136,11 @@ public class Liste implements AbstrakteListe {
      * @param wert der einzufügende Wert
      */
     @Override
-    public void addFirst(int wert) {
+    public void addFirst(E wert) {
         if(head == null){
-            head = new Node(wert);
+            head = new Node<E>(wert);
         }else{
-            Node a = new Node(wert);
+            Node a = new Node<E>(wert);
             a.next = head;
             head = a;
         }
@@ -153,12 +153,12 @@ public class Liste implements AbstrakteListe {
      * @param wert der einzufügende Wert
      */
     @Override
-    public void addLast(int wert) {
+    public void addLast(E wert) {
 
         if(head == null){
-            head = new Node(wert);
+            head = new Node<E>(wert);
         } else {
-            Node a = new Node(wert);
+            Node a = new Node<E>(wert);
             Node temp = head;
 
             while(temp.hasNext()){
@@ -178,7 +178,7 @@ public class Liste implements AbstrakteListe {
      * @return true, wenn das Element am gegebenen Index erfolgreich eingefügt wurde
      */
     @Override
-    public boolean add(int wert, int index) {
+    public boolean add(E wert, int index) {
         Node temp = head;
         int co = 0;
 
@@ -188,7 +188,7 @@ public class Liste implements AbstrakteListe {
         }else if(size > index){
             while (temp != null) {
                 if (index - 1 == co) {
-                    Node add = new Node(wert);
+                    Node add = new Node<E>(wert);
                     add.next = temp.next;
                     temp.next = add;
                     this.size++;
@@ -212,7 +212,7 @@ public class Liste implements AbstrakteListe {
      * @return true, wenn Element mit gegebenem Wert gefunden und aus der Liste entfernt wurde
      */
     @Override
-    public boolean remove(int wert) {
+    public boolean remove(E wert) {
         if(head == null){
             return false;
         }else if(head.data == wert){
@@ -227,7 +227,6 @@ public class Liste implements AbstrakteListe {
             Node temp = head;
             while(temp != null){
                 if(temp.hasNext() && temp.data == wert){
-                    temp = temp.next;
                     return true;
                 }
                 temp = temp.next;
@@ -243,12 +242,12 @@ public class Liste implements AbstrakteListe {
      * @throws NullPointerException wenn Liste leer
      */
     @Override
-    public int removeFirst() throws NullPointerException {
+    public E removeFirst() throws NullPointerException {
         if(head == null){
             throw new NullPointerException("Liste is already empty.");
         }
 
-        int a = head.data;
+        E a = head.data;
         head = head.next;
         this.size--;
         return a;
@@ -261,13 +260,13 @@ public class Liste implements AbstrakteListe {
      * @throws NullPointerException wenn Liste leer
      */
     @Override
-    public int removeLast() throws NullPointerException {
-        Node temp = head;
+    public E removeLast() throws NullPointerException {
+        Node<E> temp = head;
         if(temp == null){
             throw new NullPointerException("Liste is empty.");
         }
 
-        int a;
+        E a;
 
         while(temp != null){
             if(temp.hasNext() && !temp.next.hasNext()){
@@ -289,7 +288,7 @@ public class Liste implements AbstrakteListe {
      * @throws NullPointerException wenn Index in der Liste nicht vorhanden
      */
     @Override
-    public int removeAtIndex(int index) throws NullPointerException {
+    public E removeAtIndex(int index) throws NullPointerException {
         if(head == null){
             throw new NullPointerException("Liste is already empty.");
         }
@@ -299,11 +298,11 @@ public class Liste implements AbstrakteListe {
         }else if(index == size()){
             return removeLast();
         }else{
-            Node temp = head;
+            Node<E> temp = head;
             int co = 1;
             while(temp != null){
                 if(index - 1 == co){
-                    int a = temp.next.data;
+                    E a = temp.next.data;
                     temp.next = temp.next.next;
                     this.size--;
                     return a;

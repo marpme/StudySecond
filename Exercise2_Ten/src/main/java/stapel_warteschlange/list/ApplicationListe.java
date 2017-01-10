@@ -1,4 +1,4 @@
-package collections.list;
+package stapel_warteschlange.list;
 
 /**
  * Short tests for list.
