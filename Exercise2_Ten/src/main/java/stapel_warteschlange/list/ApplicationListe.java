@@ -10,7 +10,7 @@ package stapel_warteschlange.list;
  */
 public class ApplicationListe {
     public static void main(String[] args) {
-        Liste a = new Liste();
+        Liste<Integer> a = new Liste<Integer>();
 
         a.addFirst(2);
         a.addFirst(324);

@@ -10,36 +10,33 @@ import stapel_warteschlange.list.Liste;
  * @version 1.0
  * @since 08. Jan 2017
  */
-public class Stapel<E> extends Liste<E> {
+public class Warteschlange<E> extends Liste<E> {
 
-    public Stapel(E object) {
+    public Warteschlange(E object){
         super();
         this.addFirst(object);
     }
 
-    public Stapel() {
+    public Warteschlange(){
         super();
     }
 
-    public void push(E object) {
+    public void enqueue(E object){
         this.addFirst(object);
     }
 
-    public E pop() {
-        if (isEmpty()) {
-            return null;
-        }
-        return this.removeFirst();
+    public E dequeue(){
+        if(isEmpty()) return null;
+        return this.removeLast();
     }
 
-    public E top() {
-        if (isEmpty()) {
+    public E first(){
+        if(isEmpty())
             return null;
-        }
-        return this.get(0);
+        return this.get(this.size()-1);
     }
 
-    public boolean isEmpty() {
+    public boolean isEmpty(){
         return super.isEmpty();
     }
 

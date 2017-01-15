@@ -83,14 +83,14 @@ public class Liste<E> implements AbstrakteListe<E> {
      */
     @Override
     public E get(int index) throws NullPointerException {
-        if(index < 1 || this.size() < index) {
+        if(index < 0 || this.size() < index) {
             throw new NullPointerException("Index out of bounds.");
         }
 
         Node<E> temp = head;
-        int co = 1;
-        while(temp != null){
-            if(index == co){
+        int co = 0;
+        while (temp != null) {
+            if (co == index) {
                 return temp.data;
             }
             temp = temp.next;
@@ -218,15 +218,18 @@ public class Liste<E> implements AbstrakteListe<E> {
         }else if(head.data == wert){
             if(head.hasNext()){
                 head = head.next;
+                this.size--;
                 return true;
             }else{
                 head = null;
+                this.size--;
                 return true;
             }
         }else{
             Node temp = head;
             while(temp != null){
                 if(temp.hasNext() && temp.data == wert){
+                    this.size--;
                     return true;
                 }
                 temp = temp.next;
@@ -268,15 +271,23 @@ public class Liste<E> implements AbstrakteListe<E> {
 
         E a;
 
-        while(temp != null){
-            if(temp.hasNext() && !temp.next.hasNext()){
-                a = temp.next.data;
-                temp.next = null;
-                this.size--;
-                return a;
+        if(this.size == 1){
+            a = head.data;
+            head = null;
+            this.size--;
+            return a;
+        }else if(this.size > 1){
+            while(temp != null){
+                if(temp.hasNext() && !temp.next.hasNext()){
+                    a = temp.next.data;
+                    temp.next = null;
+                    this.size--;
+                    return a;
+                }
+                temp = temp.next;
             }
-            temp = temp.next;
         }
+
         throw new NullPointerException("wasn't able to remove last ...");
     }
 
@@ -312,6 +323,10 @@ public class Liste<E> implements AbstrakteListe<E> {
         }
 
         throw new NullPointerException("Index was out of bounds.");
+    }
+
+    public boolean isEmpty(){
+        return size() == 0 && head == null;
     }
 
     /**
